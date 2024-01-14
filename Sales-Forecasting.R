@@ -6,10 +6,10 @@ library(zoo)
 
 
 # Set working directory for locating files.
-setwd("C:/Users/STSC/Downloads/Time Series Case 1")
+setwd("C:/Users/STSC/Downloads/Time Series Project")
 
 # Create data frame.
-sales.data <- read.csv("673_case1.csv")
+sales.data <- read.csv("Sales-Data.csv")
 
 # See the first 6 records of the file.
 head(sales.data)
