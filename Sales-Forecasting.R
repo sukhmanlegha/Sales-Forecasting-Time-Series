@@ -18,7 +18,7 @@ tail(sales.data)
 
 
 
-## Question 1(a)
+## Task 1(a)
 
 # Create a time series data set using the ts() function.
 sales.ts <- ts(sales.data$Sales, start = c(2015, 1), end = c(2022, 12), freq = 12)
@@ -28,7 +28,7 @@ sales.ts
 
 
 
-## Question 1(b)
+## Task 1(b)
 
 # Plot the time series.
 plot(sales.ts, main = "Monthly Sales from 2015 to 2022", 
@@ -36,7 +36,7 @@ plot(sales.ts, main = "Monthly Sales from 2015 to 2022",
 
 
 
-## Question 1(c)
+## Task 1(c)
 
 # Autocorrelation chart using the Acf() function
 sales.autocor <- Acf(sales.ts, main = "Autocorrelation Chart for Sales Data")
@@ -51,7 +51,7 @@ data.frame(Lag, ACF)
 
 
 
-## Question 2(a)
+## Task 2(a)
 
 # Define the numbers of months in the training and validation sets.
 nTrain <- 72 
@@ -64,7 +64,7 @@ valid.ts <- window(sales.ts, start = c(2021, 1),
 
 
 
-## Question 2(b)
+## Task 2(b)
 
 # To create three trailing moving averages with window widths of 3, 8, and 12
 ma3.trail <- rollmean(train.ts, k = 3, align = "right", fill = NA)
@@ -77,7 +77,7 @@ ma12.trail
 
 
 
-## Question 2(c)
+## Task 2(c)
 
 # Create a trailing MA forecast for validation period.
 ma3.trail.pred <- forecast(ma3.trail, h = nValid, level = 0)
@@ -90,7 +90,7 @@ ma12.trail.pred
 
 
 
-## Question 2(d)
+## Task 2(d)
 
 # Calculate the accuracy measures for each trailing MA forecast
 round(accuracy(ma3.trail.pred, valid.ts), 3)
@@ -100,7 +100,7 @@ round(accuracy(ma12.trail.pred, valid.ts), 3)
 
 
 
-## Question 3(a)
+## Task 3(a)
 
 # To develop a regression model with linear trend and seasonality for 
 # training partition.
@@ -116,7 +116,7 @@ trend.seas.pred
 
 
 
-## Question 3(b)
+## Task 3(b)
 
 # Identify and display regression residuals for training partition.
 trend.seas.res <- trend.seas$residuals
@@ -131,7 +131,7 @@ ma.trail.res
 ma.trail.res.pred <- forecast(ma.trail.res, h = nValid, level = 0)
 ma.trail.res.pred
 
-## Question 3(c)
+## Task 3(c)
 
 # To develop a two-level forecast for validation period
 first.2level <- trend.seas.pred$mean + ma.trail.res.pred$mean
@@ -152,7 +152,7 @@ round(accuracy(first.2level, valid.ts), 3)
 
 
 
-## Question 3(d)
+## Task 3(d)
 
 
 # To fit a regression model with linear trend and seasonality for entire data set.
@@ -189,7 +189,7 @@ future12.df
 
 
 
-## Question 3(e)
+## Task 3(e)
 
 
 # Use snaive() to make seasonal naive forecast for validation data. 
@@ -203,7 +203,7 @@ round(accuracy((snaive(valid.ts))$fitted, valid.ts), 3)
 
 
 
-## Question 4(a)
+## Task 4(a)
 
 # To develop HW Model
 hw.ZZZ <- ets(train.ts, model = "ZZZ")
@@ -216,7 +216,7 @@ hw.ZZZ.pred
 
 
 
-## Question 4(b)
+## Task 4(b)
 
 
 # Create Holt-Winter's (HW) exponential smoothing for entire data set. 
@@ -231,7 +231,7 @@ HW.ZZZ.pred
 
 
 
-## Question 4(c)
+## Task 4(c)
 
 # Use accuracy() function to identify common accuracy measures.
 round(accuracy((snaive(sales.ts))$fitted, sales.ts), 3)
